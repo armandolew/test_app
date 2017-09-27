@@ -3,11 +3,15 @@ module API
     class CustomersController < API::ApiController
 
 	  def balance
-       render json: Services::CustomerServices::get_customer_balance.to_json
+	   cs = CustomerService.new(connection_service_params: params)
+	   render json: cs.get_customer_balance.to_json
+       #render json: Services::CustomerServices::get_customer_balance.to_json
 	  end
 
 	  def pay
 	  end
+
+
 	end
   end
 end

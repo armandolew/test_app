@@ -3,9 +3,11 @@ module API
     class CustomersController < API::ApiController
 
 	  def balance
-	   cs = CustomerService.new(connection_service_params: params)
-	   render json: cs.get_customer_balance.to_json
-       #render json: Services::CustomerServices::get_customer_balance.to_json
+      	config   = get_config({endpoint: "customer_bills", method: "POST"})
+      	cs       = ConnectionService.new(config)
+      	response = cs.get_response
+      	
+      	render json: { status: response[:code], message: response[:message] }
 	  end
 
 	  def pay

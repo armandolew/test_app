@@ -18,5 +18,9 @@ module API
   	  response = cs.get_response
     end
 
+    def json_response(status, objects)
+      render json: { status: status, objects: objects }
+    end
+
   end
 end

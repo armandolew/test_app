@@ -14,7 +14,11 @@ module API
   	  end
 
       def show
-        json_response(200, customer)
+        render json: customer
+      end
+
+      def index
+        render json: Customer.all.order('created_at DESC').paginate(per_page: per_page, page: params[:page])
       end
 
       private

@@ -1,0 +1,45 @@
+<div id="customers">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="customer in customers">
+        <td>{{ customer.first_name }}</td>
+        <td>{{ customer.email }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<script>
+  var customers = new Vue({
+    el: '#customers',
+    data: {
+      customers: []
+    },
+    methods: {
+      getData: function(){
+        var element = this;
+        $.ajax({
+          url: "/api/v1/customers.json",
+          method: 'GET',
+          dataType: 'json',
+          success: function(data){
+            element.customers = data;
+         },
+          error: function(err){
+            console.log(err);
+          }
+        });
+      }
+    }
+  });
+  $(document).ready(function(){
+    customers.getData();  
+  })
+  
+</script>

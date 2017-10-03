@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   	end
   end
 
+  resources :customers, only:  [:show, :index]
+
 end

@@ -1,9 +1,7 @@
 class CustomersController < ApplicationController
 
-  def balance
-  end
 
-  def pay
+  def index
   end
 
 end

@@ -104,7 +104,7 @@ class ConnectionService
     end
 
     def get_url
-      URI.parse("http://localhost:3000/#{self.endpoint}")
+      URI.parse("http://api.regalii.dev/#{self.endpoint}")
     end
 
     def get_timestamp

@@ -18,7 +18,7 @@ module API
       end
 
       def index
-        render json: Customer.all.order('created_at DESC').paginate(per_page: per_page, page: params[:page])
+        render json: Customer.order('created_at DESC').paginate(per_page: per_page, page: params[:page])
       end
 
       private
